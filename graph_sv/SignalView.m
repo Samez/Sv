@@ -29,7 +29,6 @@
         shift_x=0.0f;
         ind=-1;
         diameter=6.0f;
-        boldpoint=NO;
     }
     return self;
 }
@@ -150,9 +149,6 @@
     
     CGContextStrokePath(context);
     
-
-    NSDictionary *dict=[[NSDictionary alloc] init];
-    
     NSPoint maxPoint={5, zero+max*shift_y-bordersShift};
     NSPoint minPoint={5, zero+min*shift_y};
     
@@ -160,8 +156,8 @@
     NSString *botString=[[NSString alloc] initWithFormat:@"%0.2f",min];
     
     
-    [botString drawAtPoint:minPoint withAttributes: dict];
-    [topString drawAtPoint:maxPoint withAttributes:dict];
+    [botString drawAtPoint:minPoint withAttributes: nil];
+    [topString drawAtPoint:maxPoint withAttributes:nil];
     
     currX=bordersShift+leftPadding;
     NSPoint point;
@@ -179,11 +175,6 @@
 
     
 } //drawRect
-
-- (void) setBoldPoint:(bool) bold
-{
-    boldpoint=bold;
-}
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

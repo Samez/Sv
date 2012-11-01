@@ -33,8 +33,7 @@
 - (void) mouseUp:(NSEvent *)theEvent
 {
     canDrag=NO;
-    
-    [super setBoldPoint:NO];
+
     [super recalcBorder:[self frame]];
     [self setNeedsDisplay:YES];
     needRecalc=TRUE;
@@ -43,8 +42,7 @@
 
 - (void) mouseDragged:(NSEvent *)theEvent
 {
-    [super setBoldPoint:YES];
-    //[super recalcMinAndMax:[self frame]];
+
     ind=[self setInd:((([theEvent locationInWindow].x-[self frame].origin.x-bordersShift-leftPadding)/([self frame].size.width-2*bordersShift-leftPadding))* ([super.vector count]-1)+0.5)];
     NSNumber* val=[NSNumber numberWithFloat:[AC.arrangedObjects[ind] floatValue]];
     
@@ -86,7 +84,6 @@
 
 -(void) mouseDown:(NSEvent *)theEvent
 {
-    [super setBoldPoint:YES];
     needRecalc=FALSE;
     
     ind=[self setInd:((([theEvent locationInWindow].x-[self frame].origin.x-bordersShift-leftPadding)/([self frame].size.width-2*bordersShift-leftPadding))* ([super.vector count]-1)+0.5)];
